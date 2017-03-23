@@ -1,0 +1,13 @@
+<a href="/events">Home</a><a href="/logout">Logout</a>
+
+<h3>Edit Event</h3>
+<form action="/events/<%=@event.id%>" method="post">
+ <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+ <input type="hidden" name="_method" value="patch">
+ Name: <input type="text" name="event[name]" value="<%=@event.name%>">
+ Date: <input type="date" name="event[date]" value="<%=@event.date%>">
+ City: <input type="text" name="event[city]" value="<%=@event.city%>">
+ State: <%= select_tag "event[state]", options_for_select(us_states, @event.state) %>
+ <input type="hidden" name="event[host_id]" value="session[:id]">
+ <input type="submit" name="Update Event" value="Update Event">
+</form>

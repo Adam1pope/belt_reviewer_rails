@@ -1,0 +1,21 @@
+<a href="/events">Events Dashboard</a>
+<a href="/logout">Logout</a>
+
+<% if flash[:errors] %>
+	<% flash[:errors].each do |error| %>
+		<p><%= error %></p>
+	<% end %>
+<% end %>
+
+<h2>Edit Your Profile</h2>
+
+<form action="/users/<%= @user.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  First Name: <input type="text" name="user[first_name]" value="<%= @user.first_name %>"><br>
+  Last Name: <input type="text" name="user[last_name]" value="<%= @user.last_name %>"><br>
+  Email: <input type="text" name="user[email]" value="<%= @user.email %>"><br>
+  City: <input type="text" name="user[city]" value="<%= @user.city %>"><br>
+  State: <%= select_tag "user[state]", options_for_select(us_states, @user.state) %><br>
+  <input type="submit" name"Update Profile" value="Update Profile">
+</form>

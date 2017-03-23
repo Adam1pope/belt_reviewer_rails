@@ -1,0 +1,28 @@
+<% if flash[:errors ]%>
+  <% flash[:errors]. each do |error| %>
+    <p><%= error %></p>
+  <% end %>
+<% end %>
+
+<h1>Welcome!</h1>
+
+<h2>Register</h2>
+<form action="/users" method="post">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  First Name: <input type="text" name="user[first_name]" value=""><br>
+  Last Name: <input type="text" name="user[last_name]" value=""><br>
+  Email: <input type="text" name="user[email]" value=""><br>
+  City: <input type="text" name="user[city]" value=""><br>
+  State: <%= select_tag "user[state]", options_for_select(us_states) %><br>
+  Password: <input type="password" name="user[password]" value=""><br>
+  Confirm Password: <input type="password" name="user[password_confirmation]" value=""><br>
+  <input type="submit" name="register" value="Register"><br>
+</form>
+
+<h3>Login</h3>
+<form action="/users/login" method="post">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  Email: <input type="text" name="email" value=""><br>
+  Password: <input type="password" name="password" value=""><br>
+  <input type="submit" name="login" value="Login">
+</form>
