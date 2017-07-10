@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   #root route
+  root 'events#index'
   get 'events' => 'events#index'
-
   #user routes
   get 'users' => 'users#index'
   post 'users' => 'users#create'

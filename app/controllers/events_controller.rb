@@ -1,23 +1,32 @@
 class EventsController < ApplicationController
   def index
-    @user = User.find(session[:id])
-    @event = Event.where(state: @user.state)
-    @other_event = Event.where.not(state: @user.state)
+    if !session[:id]
+      redirect_to '/users'
+    else
+      @user = User.find(session[:id])
+      @event = Event.where(state: @user.state)
+      @other_event = Event.where.not(state: @user.state)
+    end
   end
 
   def show
+    @user = User.find(session[:id])
     @event = Event.find(params[:id])
     @comment = Comment.where(event_id:@event.id)
   end
 
   def create
-    @event = Event.new(events_params)
-    @event.host_id = session[:id]
-    if @event.save
-      redirect_to '/events'
+    if !session[:id]
+      redirect_to '/users'
     else
-      flash[:errors] = @event.errors.full_messages
-      redirect_to :back
+      @event = Event.new(events_params)
+      @event.host_id = session[:id]
+      if @event.save
+        redirect_to :root
+      else
+        flash[:errors] = @event.errors.full_messages
+        redirect_to :back
+      end
     end
   end
 
@@ -26,18 +35,22 @@ class EventsController < ApplicationController
   end
 
   def update
-    @event = Event.find(params[:id])
-
-    if @event.update(events_params)
-      redirect_to '/events'
+    if !session[:id]
+      redirect_to '/users'
     else
-      flash[:errors] = @event.errors.full_messages
-      redirect_to :back
+      @event = Event.find(params[:id])
+      if @event.update(events_params)
+        redirect_to :root
+      else
+        flash[:errors] = @event.errors.full_messages
+        redirect_to :back
+      end
     end
   end
 
   def destroy
-    Event.find(params[:id]).destroy
+    @event = Event.find(params[:id])
+    @event.destroy
     redirect_to :back
   end
 

@@ -1,21 +1,33 @@
-<a href="/events">Events Dashboard</a>
-<a href="/logout">Logout</a>
-
-<% if flash[:errors] %>
-	<% flash[:errors].each do |error| %>
-		<p><%= error %></p>
-	<% end %>
-<% end %>
-
 <h2>Edit Your Profile</h2>
 
-<form action="/users/<%= @user.id %>" method="post">
+<form class="form" action="/users/<%= @user.id %>" method="post">
   <input type="hidden" name="_method" value="patch">
   <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-  First Name: <input type="text" name="user[first_name]" value="<%= @user.first_name %>"><br>
-  Last Name: <input type="text" name="user[last_name]" value="<%= @user.last_name %>"><br>
-  Email: <input type="text" name="user[email]" value="<%= @user.email %>"><br>
-  City: <input type="text" name="user[city]" value="<%= @user.city %>"><br>
-  State: <%= select_tag "user[state]", options_for_select(us_states, @user.state) %><br>
-  <input type="submit" name"Update Profile" value="Update Profile">
+
+  <div class="form-group">
+    <label for="first_name">First Name</label>
+    <input type="text" class="form-control" name="user[first_name]" value="<%= @user.first_name %>">
+  </div>
+
+  <div class="form-group">
+    <label for="last_name">Last Name</label>
+    <input type="text" class="form-control" name="user[last_name]" value="<%= @user.last_name %>">
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="text" class="form-control" name="user[email]" value="<%= @user.email %>">
+  </div>
+
+  <div class="form-group">
+    <label for="city">City</label>
+    <input type="text" class="form-control" name="user[city]" value="<%= @user.city %>">
+  </div>
+
+  <div class="form-group">
+    <label for="state">State</label>
+    <%= select_tag "event[state]", options_for_select(us_states, @user.state) %>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Update Profile</button>
 </form>

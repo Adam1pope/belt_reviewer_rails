@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   attr_accessor :password_confirmation
   has_many :events
-  has_many :events, :through => :attendees
   has_many :attendees
+  has_many :events, :through => :attendees
 
   EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]+)\z/i
   validates :first_name, :last_name, :city, :state, :password, presence: true
