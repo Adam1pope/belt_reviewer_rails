@@ -74,7 +74,7 @@
                 <% if event.users.exists?(session[:id]) %>
                   Attending <a href="/attendees/<%= event.id %>/delete" data-method="delete">Cancel</a>
                 <% else %>
-                  <a href="/events/<%= event.id %>/join">Join</a>
+                  <a href="/events/<%= event.id %>/join" class="btn btn-success">Join</a>
                 <% end %>
              <% end %>
            </td>

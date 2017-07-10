@@ -1,3 +1,4 @@
+<%= stylesheet_link_tag "events" %>
 
 <div class="jumbotron">
   <h1><strong><%= @event.name %></strong></h1>
@@ -8,38 +9,48 @@
   <h4>People attending: <%= @event.users.count %> </h4>
 </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>City</th>
-      <th>State</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @event.users.each do |e| %>
-    <tr>
-      <td><%= e.first_name %></td>
-      <td><%= e.city %></td>
-      <td><%= e.state %></td>
-    </tr>
+<div class="text-center ">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th class="text-center">Name</th>
+        <th class="text-center">City</th>
+        <th class="text-center">State</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @event.users.each do |e| %>
+      <tr>
+        <td><%= e.first_name %></td>
+        <td><%= e.city %></td>
+        <td><%= e.state %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<% if @comment.exists? %>
+  <h5><strong>Discussions about this event</strong></h5>
+    <div class="comment">
+      <% @comment.each do |comment| %>
+      <p>
+    	   <%= comment.user.first_name %> says: <%= comment.content%>
+      </p>
+    </div>
     <% end %>
-  </tbody>
-</table>
-
-<h4>Discussions about this event:</h4>
-  <% @comment.each do |comment| %>
-  <p>
-	<%= comment.user.first_name %> says: <%= comment.content%></p>
-  <p>----------------------------------------------------------</p>
-  <% end %>
-<h4>Add comment:</h4>
-<form action="/comments/<%= @event.id %>" method="post">
-  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-  <textarea name="content" rows="8" cols="80"></textarea>
-  <input type="submit" name="" value="Submit Comment">
-</form>
-
 <% else %>
-  <em><h4>No one is currently attending this event!</h4></em>
+  <h4>Add the first comment to this event!</h4>
 <% end %>
+  <form class="form" action="/comments/<%= @event.id %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    <div class="form-group">
+      <label for="comment">Add Comment</label>
+      <textarea name="content" class="form-control" rows="5"></textarea>
+    </div>
+    <button type="submit" class="btn btn-default">Add Comment</button>
+  </form>
+
+  <% else %>
+    <em><h4>No one is currently attending this event!</h4></em>
+  <% end %>
