@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to :back
     else
-      flash[:errors] = ['Your comment could not be created.']
+      flash[:errors] = ['Your comment could not be created']
       redirect_to :back
     end
   end

@@ -16,3 +16,40 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.container {
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+}
+
+.jumbotron {
+  background-color: #4169E1;
+  color: white;
+}
+
+.form-horizontal {
+  padding-top: 20px;
+  padding-bottom: 50px;
+  padding-left: 60px;
+  background-color: #eee;
+  border-radius: 6px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+th, td {
+  font-size: 15px;
+}
+
+h2 {
+  margin-bottom: 15px;
+  margin-left: 10px;
+}
+
+.navbar {
+  background-color: #4169E1;
+  margin-bottom: 2px;
+}
+
+.navbar a {
+  color: white;
+}

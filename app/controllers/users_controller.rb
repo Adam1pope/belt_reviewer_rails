@@ -10,14 +10,14 @@ class UsersController < ApplicationController
   def login
     @user = User.find_by_email(params[:email])
     if @user.nil?
-      flash[:errors] = ['User Not Found']
+      flash[:errors] = ['User does not exist']
       redirect_to :back
     else
       if @user.password == params[:password]
         session[:id] = @user.id
         redirect_to '/events'
       else
-        flash[:errors] = ['Password does not match!']
+        flash[:errors] = ['Password does not match']
         redirect_to :back
       end
     end
