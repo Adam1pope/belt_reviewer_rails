@@ -26,6 +26,19 @@
   color: white;
 }
 
+table.table-bordered{
+  border: 1px solid black;
+  margin-bottom: 0px;
+}
+
+table.table-bordered > thead > tr > th {
+  border: 1px solid black;
+}
+
+table.table-bordered > tbody > tr > td {
+  border: 1px solid black;
+}
+
 .form-horizontal {
   padding-top: 20px;
   padding-bottom: 50px;

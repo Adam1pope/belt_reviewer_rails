@@ -10,9 +10,13 @@ class EventsController < ApplicationController
   end
 
   def show
-    @user = User.find(session[:id])
-    @event = Event.find(params[:id])
-    @comment = Comment.where(event_id:@event.id)
+    if !session[:id]
+      redirect_to '/users'
+    else
+      @user = User.find(session[:id])
+      @event = Event.find(params[:id])
+      @comment = Comment.where(event_id:@event.id)
+    end
   end
 
   def create
@@ -31,7 +35,11 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = Event.find(params[:id])
+    if !session[:id]
+      redirect_to '/users'
+    else
+      @event = Event.find(params[:id])
+    end
   end
 
   def update
@@ -49,9 +57,13 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @event = Event.find(params[:id])
-    @event.destroy
-    redirect_to :back
+    if !session[:id]
+      redirect_to '/users'
+    else
+      @event = Event.find(params[:id])
+      @event.destroy
+      redirect_to :back
+    end 
   end
 
   private

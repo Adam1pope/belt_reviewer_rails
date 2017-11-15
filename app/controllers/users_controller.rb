@@ -38,17 +38,25 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    if !session[:id]
+      redirect_to '/users'
+    else
+      @user = User.find(params[:id])
+    end
   end
 
   def update
-    @user = User.find(params[:id])
-    if @user.update(update_params)
-      redirect_to '/events'
+    if !session[:id]
+      redirect_to '/users'
     else
-      flash[:errors] = @user.errors.full_messages
-      redirect_to :back
-    end
+      @user = User.find(params[:id])
+      if @user.update(update_params)
+        redirect_to '/events'
+      else
+        flash[:errors] = @user.errors.full_messages
+        redirect_to :back
+      end
+    end 
   end
 
   def logout

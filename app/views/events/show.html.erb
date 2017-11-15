@@ -42,12 +42,12 @@
 <% else %>
   <h2><strong>Add the first comment to this event!</strong></h2>
 <% end %>
-
     <form class="form" action="/comments/<%= @event.id %>" method="post">
       <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+      <input type="hidden" name="comment[event_id]" value="<%= @event.id %>">
       <div class="form-group">
         <label for="comment"><h2><strong>Add Comment</strong></h2></label>
-        <textarea name="content" class="form-control" placeholder="10 character minimum!" rows="3"></textarea>
+        <textarea name="comment[content]" class="form-control" placeholder="10 character minimum!" rows="3"></textarea>
       </div>
       <button type="submit" class="btn btn-primary">Add Comment</button>
     </form>
