@@ -1,28 +1,19 @@
-== README
+# Ruby On Rails Coding Dojo Belt Reviewer 
+Simple Ruby on Rails application that allows users to view, add and comment on events happening in various locations.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby version 2.3.3
 
-Things you may want to cover:
+## To Run Project Locally
 
-* Ruby version
+* Clone the Project
+'git clone https://github.com/bennettlumbera/belt_reviewer_rails.git'
 
-* System dependencies
+* If running in Vagrant virtual environment make sure to be in vagrant folder
+Start Vagrant
+'vagrant up
+ vagrant ssh'
 
-* Configuration
+* Run server 
+'rails s -b 0.0.0.0'
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Open localhost:3000 on browser 
