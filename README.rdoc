@@ -1,16 +1,16 @@
-# Ruby On Rails Coding Dojo Belt Reviewer 
+ == Ruby On Rails Coding Dojo Belt Reviewer 
 Simple Ruby on Rails application that allows users to view, add and comment on events happening in various locations.
 
-Ruby version 2.3.3
+ 'Ruby version 2.3.3'
 
 ## To Run Project Locally
 
 * Clone the Project
-'git clone https://github.com/bennettlumbera/belt_reviewer_rails.git'
+ 'git clone https://github.com/bennettlumbera/belt_reviewer_rails.git'
 
 * If running in Vagrant virtual environment make sure to be in vagrant folder
 Start Vagrant
-'vagrant up
+ 'vagrant up
  vagrant ssh'
 
 * Run server 
