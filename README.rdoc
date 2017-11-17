@@ -1,4 +1,4 @@
- ==Ruby On Rails Coding Dojo Belt Reviewer 
+=Ruby On Rails Coding Dojo Belt Reviewer 
 Simple Ruby on Rails application that allows users to view, add and comment on events happening in various locations.
 
  Ruby version 2.3.3
